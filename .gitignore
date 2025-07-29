@@ -1,0 +1,69 @@
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.prof
+*.log
+/bin
+/vendor
+
+# Binary output directories
+**/bin/
+/dist/
+
+# Dependency directories
+/vendor/
+
+# Go workspace file
+go.work
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Debug files
+debug
+*.debug
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Compiled Object files, Static and Dynamic libs
+*.o
+*.a
+
+# Log files
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Ignore built binaries
+/bin/
+**/bin/
