@@ -113,6 +113,13 @@ func (s *SOCKS5Server) createProxyConnection(transport string, addr string) (net
 		return nil, fmt.Errorf("failed to create new connection: %v", err)
 	}
 
+	// If the connection is nil, it means that the data channel could not be created.
+	// This can happen if the relay is not responding or if the data channel is not
+	// yet open. In this case, we should return an error to the SOCKS5 client.
+	if connection == nil {
+		return nil, fmt.Errorf("failed to create new connection: connection is nil")
+	}
+
 	req := connectionDetails{
 		NetworkType: transport,
 		TargetAddr:  addr,
