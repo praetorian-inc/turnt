@@ -7,6 +7,7 @@ require (
 	github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5
 	github.com/google/uuid v1.6.0
 	github.com/pion/ice/v2 v2.3.37
+	github.com/pion/stun v0.6.1
 	github.com/pion/webrtc/v3 v3.3.5
 	github.com/quic-go/quic-go v0.41.0
 	github.com/spf13/cobra v1.9.1
@@ -31,7 +32,6 @@ require (
 	github.com/pion/sctp v1.8.19 // indirect
 	github.com/pion/sdp/v3 v3.0.9 // indirect
 	github.com/pion/srtp/v2 v2.0.20 // indirect
-	github.com/pion/stun v0.6.1 // indirect
 	github.com/pion/transport/v2 v2.2.10 // indirect
 	github.com/pion/turn/v2 v2.1.6 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect

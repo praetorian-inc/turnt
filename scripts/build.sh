@@ -21,9 +21,7 @@ mkdir -p "$OUTPUT_DIR"
 
 BINARIES=(
   "turnt-relay ./cmd/relay/relay.go yes"
-  "turnt-credentials ./cmd/credentials/credentials.go no"
-  "turnt-control ./cmd/controller/controller.go no"
-  "turnt-admin ./cmd/admin/admin.go no"
+  "turnt ./cmd/turnt/ no"
 )
 
 # Clean up old zip files
@@ -42,15 +40,9 @@ for binary in "${BINARIES[@]}"; do
       continue
     fi
     
-    # Skip non-relay binaries on Windows
+    # Skip non-relay binaries on Windows (operator tools are Linux/macOS only)
     if [[ "$GOOS" == "windows" && "$NAME" != "turnt-relay" ]]; then
       echo "⚠️  Skipping $NAME for Windows platform"
-      continue
-    fi
-
-    # Skip admin binary on Windows
-    if [[ "$GOOS" == "windows" && "$NAME" == "turnt-admin" ]]; then
-      echo "⚠️  Skipping admin binary for Windows platform"
       continue
     fi
     
