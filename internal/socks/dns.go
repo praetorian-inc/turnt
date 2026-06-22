@@ -251,12 +251,16 @@ func (r *WebRTCResolver) Resolve(ctx context.Context, name string) (context.Cont
 		return ctx, nil, fmt.Errorf("no IP addresses found for hostname: %s", name)
 	}
 
-	ip := net.ParseIP(ips[0])
-	if ip == nil {
-		logger.Error("Invalid IP address returned: %s", ips[0])
-		return ctx, nil, fmt.Errorf("invalid IP address returned: %s", ips[0])
+	for _, ipStr := range ips {
+		ip := net.ParseIP(ipStr)
+		if ip != nil {
+			logger.Info("Resolved %s to %s", name, ip.String())
+			return ctx, ip, nil
+		}
+
+		logger.Info("Skipping invalid IP address returned for %s: %s", name, ipStr)
 	}
 
-	logger.Info("Resolved %s to %s", name, ip.String())
-	return ctx, ip, nil
+	logger.Error("No valid IP addresses found for hostname: %s", name)
+	return ctx, nil, fmt.Errorf("no valid IP addresses found for hostname: %s", name)
 }
